@@ -1,0 +1,187 @@
+<mat-toolbar color="primary">
+    Registration
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+<p>{{registrationForm.get('contactNo').hasError('pattern') && registrationForm.get('contactNo').touched}}</p>
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]= "registrationForm">
+
+  <mat-dialog-content center>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Name" type="text">
+            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
+            <mat-error *ngIf="registrationForm.get('name').hasError('pattern') && registrationForm.get('name').touched">Only alphabets allowed</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class=" half-width" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username" placeholder="Enter a Username" type="text">
+            <mat-error *ngIf="registrationForm.get('username').hasError('required') && registrationForm.get('username').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="Password" type="text">
+            <mat-error *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Guardian Type</mat-label>
+            <input matInput formControlName="guardianType" placeholder="Guardian Type" type="text">
+            <mat-error *ngIf="registrationForm.get('guardianType').hasError('required') && registrationForm.get('guardianType').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Guardian Name</mat-label>
+            <input matInput formControlName="guardianName" placeholder="Guardian Name" type="text">
+            <mat-error *ngIf="registrationForm.get('guardianName').hasError('required') && registrationForm.get('guardianName').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" placeholder="Address" type="text">
+            <mat-error *ngIf="registrationForm.get('address').hasError('required') && registrationForm.get('address').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Citizenship</mat-label>
+            <input matInput formControlName="citizenship" placeholder="Citizenship" type="text">
+            <mat-error *ngIf="registrationForm.get('citizenship').hasError('required') && registrationForm.get('citizenship').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state" placeholder="State" type="text">
+            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country" placeholder="Country" type="text">
+            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="email" placeholder="Email Address" type="text">
+            <mat-error *ngIf="registrationForm.get('email').hasError('required') && registrationForm.get('email').touched">This is required</mat-error>
+            <mat-error *ngIf="registrationForm.get('email').hasError('email') && registrationForm.get('email').touched">Invalid Email Address</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Gender</mat-label>
+            <input matInput formControlName="gender" placeholder="Gender" type="text">
+            <mat-error *ngIf="registrationForm.get('gender').hasError('required') && registrationForm.get('gender').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Marital Status</mat-label>
+            <input matInput formControlName="maritalStat" placeholder="Marital Status" type="text">
+            <mat-error *ngIf="registrationForm.get('maritalStat').hasError('required') && registrationForm.get('maritalStat').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Contact Number</mat-label>
+            <input matInput formControlName="contactNo" placeholder="Contact Number" type="text">
+            <mat-error *ngIf="registrationForm.get('contactNo').hasError('required') && registrationForm.get('contactNo').touched">This is required</mat-error>
+            <mat-error *ngIf="registrationForm.get('contactNo').hasError('pattern') && registrationForm.get('contactNo').touched">Invalid Contact Number</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput formControlName="DOB" placeholder="Date of Birth" type="date">
+            <mat-error *ngIf="registrationForm.get('DOB').hasError('required') && registrationForm.get('DOB').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Registeration Date</mat-label>
+            <input matInput formControlName="registrationDate" placeholder="Registration Date" type="date">
+            <mat-error *ngIf="registrationForm.get('registrationDate').hasError('required') && registrationForm.get('registrationDate').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Account Type</mat-label>
+            <input matInput formControlName="accType" placeholder="Account Type" type="text">
+            <mat-error *ngIf="registrationForm.get('accType').hasError('required') && registrationForm.get('accType').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Branch Name</mat-label>
+            <input matInput formControlName="branchName" placeholder="Branch Name" type="text">
+            <mat-error *ngIf="registrationForm.get('branchName').hasError('required') && registrationForm.get('branchName').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Citizen Status</mat-label>
+            <input matInput formControlName="citizenStat" placeholder="Citizen Status" type="text">
+            <mat-error *ngIf="registrationForm.get('citizenStat').hasError('required') && registrationForm.get('citizenStat').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Initial Deposit Amount</mat-label>
+            <input matInput formControlName="initDepoAmt" placeholder="Initial Deposit Amount" type="text">
+            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Identification Proof Type</mat-label>
+            <input matInput formControlName="idProofType" placeholder="Identification Proof Type" type="text">
+            <mat-error *ngIf="registrationForm.get('idProofType').hasError('required') && registrationForm.get('idProofType').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Identification Proof Number</mat-label>
+            <input matInput formControlName="idProofNo" placeholder="Identification Proof Number" type="text">
+            <mat-error *ngIf="registrationForm.get('idProofNo').hasError('required') && registrationForm.get('idProofNo').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Nominee Name</mat-label>
+            <input matInput formControlName="nomineeName" placeholder="Nominee Name" type="text">
+            <mat-error *ngIf="registrationForm.get('nomineeName').hasError('required') && registrationForm.get('nomineeName').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Nominee Account Number</mat-label>
+            <input matInput formControlName="nomineeAccNo" placeholder="Nominee Account Number" type="text">
+            <mat-error *ngIf="registrationForm.get('nomineeAccNo').hasError('required') && registrationForm.get('nomineeAccNo').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width" appearance="outline">
+            <mat-label>Nominee Address</mat-label>
+            <input matInput formControlName="nomineeAddress" placeholder="Nominee Address" type="text">
+            <mat-error *ngIf="registrationForm.get('nomineeAddress').hasError('required') && registrationForm.get('nomineeAddress').touched">This is required</mat-error>
+          </mat-form-field>
+      </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="registrationForm.invalid">Register</button>
+  </mat-dialog-actions>
+</form>

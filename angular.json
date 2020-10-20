@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BOW"
+    }
+  },
+  "defaultProject": "BOW",
+  "cli": {
+    "analytics": "b0d4c888-3e63-464e-9ec7-bd11cb8f657c"
+  }
 }

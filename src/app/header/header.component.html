@@ -1,0 +1,25 @@
+<div class="container jumbotron"
+    fxLayout="row"
+    fxLayout.sm="column"
+    fxLayout.xs="column"
+    fxLayoutAlign.xs="start center"
+    fxLayoutAlign.gt-sm="center center"
+    fxLayoutAlign.sm="start center"
+    fxLayoutGap="10px">
+    <div fxFlex fxFlex.gt-sm="50%">
+        <h1> Bank of Westeros </h1>     
+        <p>We offer the best banking service in all of Westeros, and create a unique user experience. Become a part of BOW family now!</p>
+    </div>
+    <!-- <div fxFlex fxFlex.gt-sm="20%">
+        <img src="/assets/images/"
+    </div> -->
+</div>
+<mat-toolbar color="primary">
+    <!-- put logo here -->
+    <a mat-button routerLink='/home' routerLinkActive='active'><span class="fa fa-home fa-lg"></span>Home</a>
+    <a mat-button routerLink='/aboutus' routerLinkActive='active'><span class="fa fa-info fa-lg"></span>About</a>
+    <a mat-button routerLink='/contactus' routerLinkActive='active'><span class="fa fa-address-card fa-lg"></span>Contact Us</a>
+    <a mat-button routerLink='/loan' routerLinkActive='active'><span class="fa fa-rupee-sign fa-lg"></span>Apply Loan</a>
+    <span class="flex-spacer"></span>
+    <a mat-button (click) = "openLoginForm()"><span class="fa fa-sign-in fa-lg"></span>Login</a>
+</mat-toolbar>

@@ -1,0 +1,140 @@
+<div fxFlex fxFlexOffset="20px" class="form-size">
+    <h3>Fill Loan Details</h3>
+    <p>{{ loanForm.value | json }} {{ loanForm.status | json }} {{isPersonal}} {{loanForm.controls['loanAmount'].errors.validamt}}</p>
+    
+    <form novalidate [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Loan Type</mat-label>
+        <mat-select matInput placeholder="Select Loan Type" (selectionChange)="loanTypeSelect($event.value)" formControlName="loanType">
+            <mat-option *ngFor="let lType of loanTypes" [value]="lType">
+              {{ lType }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="loanForm.get('loanType').hasError('required') && loanForm.get('loanType').touched">Loan Type is required</mat-error>
+      </mat-form-field>  
+      <div [hidden] = "!isPersonal" >
+        <mat-form-field class="half-width">
+          <mat-label>Annual Income</mat-label>
+          <input matInput formControlName="annualIncome" placeholder="Annual Income" type="text">
+          <mat-error *ngIf="loanForm.get('annualIncome').hasError('required') && loanForm.get('annualIncome').touched">This is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Company Name</mat-label>
+          <input matInput formControlName="companyName" placeholder="Company Name" type="text">
+          <mat-error *ngIf="loanForm.get('companyName').hasError('required') && loanForm.get('companyName').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Designation</mat-label>
+          <input matInput formControlName="designation" placeholder="Designation" type="text">
+          <mat-error *ngIf="loanForm.get('designation').hasError('required') && loanForm.get('designation').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Total Experience</mat-label>
+          <input matInput formControlName="totalExp" placeholder="Total Experience" type="number">
+          <mat-error *ngIf="loanForm.get('totalExp').hasError('required') && loanForm.get('totalExp').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Experience with Current Company</mat-label>
+          <input matInput formControlName="expCurr" placeholder="Experience with Current Company" type="number">
+          <mat-error *ngIf="loanForm.get('expCurr').hasError('required') && loanForm.get('expCurr').touched">This is required</mat-error>
+
+        </mat-form-field>
+      </div>
+      <div [hidden] = "!isEducational" >
+        <mat-form-field class="half-width">
+          <mat-label>Course Fee</mat-label>
+          <input matInput formControlName="courseFee" placeholder="Enter Course Fee" type="text">
+          <mat-error *ngIf="loanForm.get('courseFee').hasError('required') && loanForm.get('courseFee').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Course</mat-label>
+          <input matInput formControlName="course" placeholder="Enter Course Opted" type="text">
+          <mat-error *ngIf="loanForm.get('course').hasError('required') && loanForm.get('course').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Father's Name </mat-label>
+          <input matInput formControlName="fatherName" placeholder="Enter Father's Name " type="text">
+          <mat-error *ngIf="loanForm.get('fatherName').hasError('required') && loanForm.get('fatherName').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Father's Occupation</mat-label>
+          <input matInput formControlName="fatherOccupation" placeholder="Enter Father's Occupation" type="text">
+          <mat-error *ngIf="loanForm.get('fatherOccupation').hasError('required') && loanForm.get('fatherOccupation').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Father's Total Experience</mat-label>
+          <input matInput formControlName="fatherTotalExp" placeholder="Enter Father's Total Experience" type="text">
+          <mat-error *ngIf="loanForm.get('fatherTotalExp').hasError('required') && loanForm.get('fatherTotalExp').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Father's Experience in Current Company</mat-label>
+          <input matInput formControlName="fatherExpCurr" placeholder="Current Company Experience" type="text">
+          <mat-error *ngIf="loanForm.get('fatherExpCurr').hasError('required') && loanForm.get('fatherExpCurr').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Ration Card Number</mat-label>
+          <input matInput formControlName="rationCardNo" placeholder="Enter Ration Card Details" type="text">
+          <mat-error *ngIf="loanForm.get('rationCardNo').hasError('required') && loanForm.get('rationCardNo').touched">This is required</mat-error>
+
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>Annual Income</mat-label>
+          <input matInput formControlName="annualIncome" placeholder="Enter Annual Income" type="text">
+          <mat-error *ngIf="loanForm.get('annualIncome').hasError('required') && loanForm.get('annualIncome').touched">This is required</mat-error>
+
+        </mat-form-field>
+      </div>
+      <p>
+        <mat-form-field class="half-width">
+          <mat-label>Loan Amount</mat-label>
+          <input matInput formControlName="loanAmount" placeholder="Loan Amount" type="text">
+          <mat-error *ngIf="loanForm.controls['loanAmount'].errors.required && loanForm.get('loanAmount').touched">This is required</mat-error>
+          <mat-error *ngIf="!loanForm.controls['loanAmount'].errors.validamt">Invalid Amount</mat-error>
+
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="lApplyDate" placeholder="Loan Apply Date" type="date">
+          <mat-error *ngIf="loanForm.get('lApplyDate').hasError('required') && loanForm.get('lApplyDate').touched">This is required</mat-error>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="lIssueDate" placeholder="Loan Issue Date" type="date">
+          <mat-error *ngIf="loanForm.get('lIssueDate').hasError('required') && loanForm.get('lIssueDate').touched">This is required</mat-error>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput formControlName="rateOfInterest" placeholder="Rate of Interest" type="text">
+          <mat-error *ngIf="loanForm.get('rateOfInterest').hasError('required') && loanForm.get('rateOfInterest').touched">This is required</mat-error>
+
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Loan Type</mat-label>
+          <mat-select matInput placeholder="Select Duration of Loan" (selectionChange)="loanTypeSelect($event.value)" formControlName="duration">
+              <mat-option *ngFor="let dur of loanDuration" [value]="dur">
+                {{ dur }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="loanForm.get('duration').hasError('required') && loanForm.get('duration').touched">Loan Type is required</mat-error>
+        </mat-form-field>  
+      </p>
+      <button type="submit" [disabled]="loanForm.invalid" mat-button class="background-primary text-floral-white">Submit</button>
+    </form>
+  </div>

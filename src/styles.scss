@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+//resets
+
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Roboto,sans-serif;
+
+}
+
+.container{
+    margin: 220px;
+    display: flex;
+}
+
+$lt-gray: #ddd;
+$background-moredark:#05668d;
+$background-dark: #028090;
+$background-pale: #f0f3bd;
+$background-light: #02c39a;
+$primary-color: #00a896;
+$primary-color-dark: #028090;
+$primary-color-light: #f0f3bd;
+$primary-color-text: #FFFFFF;
+$accent-color: #FFC107;
+$primary-text-color: #212121;
+$secondary-text-color: #757575;
+$divider-color: #BDBDBD;
+
+@mixin zero-margin($pad-up-down, $pad-left-right){
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+.mat-toolbar{
+    background-color: $background-light!important;
+}
+.background-primary {
+    background-color: $background-dark!important;
+}
+.background-accent {
+    background-color: $accent-color!important;
+}
+.text-floral-white{
+    color: floralwhite!important;
+}
+.flex-spacer{
+    flex: 1 1 auto;
+}
