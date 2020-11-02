@@ -17,9 +17,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './Shared/baseURL';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -29,6 +34,9 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoanComponent } from './loan/loan.component';
 import { RegistrationComponent } from './registration/registration.component';
+
+import { CustomerService } from './services/customer.service';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -40,17 +48,22 @@ import { RegistrationComponent } from './registration/registration.component';
     AboutComponent,
     ContactComponent,
     LoanComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ViewProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
 
     FlexLayoutModule,
     BrowserAnimationsModule,
     FormsModule,
     
     MatTabsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatMenuModule,
     MatToolbarModule,
     MatListModule,
     MatGridListModule,
@@ -64,7 +77,10 @@ import { RegistrationComponent } from './registration/registration.component';
     MatSlideToggleModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    CustomerService,
+    { provide: 'BaseURL', useValue: baseURL }
+  ],
   entryComponents: [LoginComponent],
   bootstrap: [AppComponent]
 })

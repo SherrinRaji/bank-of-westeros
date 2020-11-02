@@ -1,0 +1,145 @@
+<!-- : string;
+    : number;
+    : Date;
+    : Date;
+    : string;
+    : string;
+    : string;
+    : number;
+    : string;
+    : string;
+    : string;
+    : number;
+    : string; -->
+    <!-- <pre>{{customerDetails|json}}</pre> -->
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]= "updateForm">
+   <mat-grid-list cols = "4" rowHeight = "50px">
+      <mat-grid-tile style="background: white !important"
+      [colspan] = "3"
+      [rowspan] = "1">Profile Details</mat-grid-tile>
+      <mat-grid-tile style="background: white !important" [colspan] = "1" [rowspan] = "1">
+         <button type="button" *ngIf="!isEdit" mat-button class="background-primary text-floral-white" (click) = "onEdit()">Edit</button>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Customer ID : </label><span *ngIf="!isEdit">{{customerDetails.id}}</span>
+        &nbsp;<input matInput *ngIf="isEdit" formControlName="id" [(ngModel)]="customerDetails.id" placeholder="Customer ID" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+        <label>Name : </label><span *ngIf="!isEdit">{{customerDetails.name}}</span>
+        &nbsp;<input matInput *ngIf="isEdit" formControlName="name" [(ngModel)]="customerDetails.name" placeholder="Name" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Guardian Type : </label><span *ngIf="!isEdit">{{customerDetails.guardianType}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="guardianType" [(ngModel)]="customerDetails.guardianType" placeholder="Guardian Type" type="text">
+       
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Guardian Name : </label><span *ngIf="!isEdit">{{customerDetails.guardianName}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="guardianName" [(ngModel)]="customerDetails.guardianName" placeholder="Guardian Name" type="text">
+       
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Address : </label><span *ngIf="!isEdit">{{customerDetails.address}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="address" [(ngModel)]="customerDetails.address" placeholder="address" type="text">
+       
+      
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Citizenship : </label><span *ngIf="!isEdit">{{customerDetails.citizenship}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="citizenship" [(ngModel)]="customerDetails.citizenship" placeholder="Citizenship" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>State : </label><span *ngIf="!isEdit">{{customerDetails.state}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="state" [(ngModel)]="customerDetails.state" placeholder="State" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Country : </label><span *ngIf="!isEdit">{{customerDetails.country}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="country" [(ngModel)]="customerDetails.country" placeholder="Country" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2"[rowspan] = "1">
+         <label>Email : </label><span *ngIf="!isEdit">{{customerDetails.email}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="email" [(ngModel)]="customerDetails.email" placeholder="Email" type="email">
+      
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2"[rowspan] = "1">
+         <label>Gender : </label><span *ngIf="!isEdit">{{customerDetails.gender}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="gender" [(ngModel)]="customerDetails.gender" placeholder="Gender" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Marital Status : </label><span *ngIf="!isEdit">{{customerDetails.maritalStat}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="maritalStat" [(ngModel)]="customerDetails.maritalStat" placeholder="Marital Status" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Contact Number : </label><span *ngIf="!isEdit">{{customerDetails.contactNo}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="contactNo" [(ngModel)]="customerDetails.contactNo" placeholder="Contact Number" type="number">
+      
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Date of Birth : </label><span *ngIf="!isEdit">{{customerDetails.DOB}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="DOB" [(ngModel)]="customerDetails.DOB" placeholder="Date of Birth" type="date">
+      
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Registration Date : </label><span *ngIf="!isEdit">{{customerDetails.registrationDate}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="registrationDate" [(ngModel)]="customerDetails.registrationDate" placeholder="Registration Date" type="date">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Account Type : </label><span *ngIf="!isEdit">{{customerDetails.accType}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="accType" [(ngModel)]="customerDetails.accType" placeholder="Account Type" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile [colspan] = "2" [rowspan] = "1">
+         <label>Branch Name : </label><span *ngIf="!isEdit">{{customerDetails.branchName}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="branchName" [(ngModel)]="customerDetails.branchName" placeholder="Branch Name" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Citizen Status : </label><span *ngIf="!isEdit">{{customerDetails.citizenStat}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="citizenStat" [(ngModel)]="customerDetails.citizenStat" placeholder="Citizen Status" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Id Proof Type : </label><span *ngIf="!isEdit">{{customerDetails.idProofType}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="idProofType" [(ngModel)]="customerDetails.idProofType" placeholder="ID proof Type" type="text">
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Id Proof Number : </label><span *ngIf="!isEdit">{{customerDetails.idProofNo}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="idProofNo" [(ngModel)]="customerDetails.idProofNo" placeholder="ID proof Number" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Nominee Name : </label><span *ngIf="!isEdit">{{customerDetails.nomineeName}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="nomineeName" [(ngModel)]="customerDetails.nomineeName" placeholder="Nominee Name" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Nominee Account Number : </label><span *ngIf="!isEdit">{{customerDetails.nomineeAccNo}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="nomineeAccNo" [(ngModel)]="customerDetails.nomineeAccNo" placeholder="Nominee Account Number" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "2"
+      [rowspan] = "1">
+         <label>Nominee Address : </label><span *ngIf="!isEdit">{{customerDetails.nomineeAddress}}</span>
+         &nbsp;<input matInput *ngIf="isEdit" formControlName="nomineeAddress" [(ngModel)]="customerDetails.nomineeAddress" placeholder="Nominee Address" type="text">
+      
+      </mat-grid-tile>
+      <mat-grid-tile 
+      [colspan] = "4"
+      [rowspan] = "1">
+      <button type="submit" *ngIf="isEdit" [disabled]="updateForm.invalid" mat-button class="background-primary text-floral-white">Submit</button>
+      &nbsp;
+      <button type="button" *ngIf="isEdit" mat-button class="background-primary text-floral-white" (click) = "onCancel()">Cancel</button> 
+      </mat-grid-tile>
+   </mat-grid-list>
+   
+</form>

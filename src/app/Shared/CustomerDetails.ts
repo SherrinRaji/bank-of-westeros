@@ -1,7 +1,18 @@
+export class CurrentCustomer{
+    no: string;
+    id: string;
+    username: string;
+    name: string;
+}
+export class Country{
+    country: string;
+    states: string[];
+}
 export class CustomerDetails{
     id: string;
     name: string;
     username: string;
+    accountNo: string;
     password: string;
     guardianType: string;
     guardianName: string;

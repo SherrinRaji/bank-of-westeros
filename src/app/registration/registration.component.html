@@ -3,7 +3,7 @@
     <span class="flex-spacer"></span>
     <button mat-button mat-dialog-close>&times;</button>
 </mat-toolbar>
-<p>{{registrationForm.get('contactNo').hasError('pattern') && registrationForm.get('contactNo').touched}}</p>
+<!-- <p>{{registrationForm.get('contactNo').hasError('pattern') && registrationForm.get('contactNo').touched}}</p> -->
 <form novalidate (ngSubmit)="onSubmit()" [formGroup]= "registrationForm">
 
   <mat-dialog-content center>
@@ -11,171 +11,187 @@
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Name</mat-label>
             <input matInput formControlName="name" placeholder="Name" type="text">
-            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
-            <mat-error *ngIf="registrationForm.get('name').hasError('pattern') && registrationForm.get('name').touched">Only alphabets allowed</mat-error>
+            <mat-error *ngIf="formErrors.name">{{formErrors.name}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class=" half-width" appearance="outline">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username" placeholder="Enter a Username" type="text">
-            <mat-error *ngIf="registrationForm.get('username').hasError('required') && registrationForm.get('username').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" placeholder="Password" type="text">
-            <mat-error *ngIf="registrationForm.get('password').hasError('required') && registrationForm.get('password').touched">This is required</mat-error>
+            <input matInput formControlName="password" placeholder="Password" type="password">
+            <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Guardian Type</mat-label>
             <input matInput formControlName="guardianType" placeholder="Guardian Type" type="text">
-            <mat-error *ngIf="registrationForm.get('guardianType').hasError('required') && registrationForm.get('guardianType').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.guardianType">{{formErrors.guardianType}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Guardian Name</mat-label>
             <input matInput formControlName="guardianName" placeholder="Guardian Name" type="text">
-            <mat-error *ngIf="registrationForm.get('guardianName').hasError('required') && registrationForm.get('guardianName').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.guardianName">{{formErrors.guardianName}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Address</mat-label>
             <input matInput formControlName="address" placeholder="Address" type="text">
-            <mat-error *ngIf="registrationForm.get('address').hasError('required') && registrationForm.get('address').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.address">{{formErrors.address}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Citizenship</mat-label>
             <input matInput formControlName="citizenship" placeholder="Citizenship" type="text">
-            <mat-error *ngIf="registrationForm.get('citizenship').hasError('required') && registrationForm.get('citizenship').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.citizenship">{{formErrors.citizenship}}</mat-error>
           </mat-form-field>
       </p>
       <p>
-        <mat-form-field class="half-width" appearance="outline">
-            <mat-label>State</mat-label>
-            <input matInput formControlName="state" placeholder="State" type="text">
-            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
-          </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="half-width" appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label>Country</mat-label>
-            <input matInput formControlName="country" placeholder="Country" type="text">
-            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
-          </mat-form-field>
+            <mat-select matInput placeholder="Select country" (selectionChange)="countryChange($event.target.value)" formControlName="country">
+                <mat-option *ngFor="let ctry of countryList" [value]="ctry.country">
+                  {{ ctry.country }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="formErrors.country">{{formErrors.country}}</mat-error>
+            </mat-form-field>
       </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>State</mat-label>
+          <mat-select matInput placeholder="Select State"  formControlName="state">
+              <mat-option *ngFor="let stat of states" [value]="stat">
+                {{ stat }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formErrors.state">{{formErrors.stat}}</mat-error>
+          </mat-form-field>
+    </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Email Address</mat-label>
             <input matInput formControlName="email" placeholder="Email Address" type="text">
-            <mat-error *ngIf="registrationForm.get('email').hasError('required') && registrationForm.get('email').touched">This is required</mat-error>
-            <mat-error *ngIf="registrationForm.get('email').hasError('email') && registrationForm.get('email').touched">Invalid Email Address</mat-error>
+            <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Gender</mat-label>
             <input matInput formControlName="gender" placeholder="Gender" type="text">
-            <mat-error *ngIf="registrationForm.get('gender').hasError('required') && registrationForm.get('gender').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.gender">{{formErrors.gender}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Marital Status</mat-label>
             <input matInput formControlName="maritalStat" placeholder="Marital Status" type="text">
-            <mat-error *ngIf="registrationForm.get('maritalStat').hasError('required') && registrationForm.get('maritalStat').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.maritalStat">{{formErrors.maritalStat}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Contact Number</mat-label>
             <input matInput formControlName="contactNo" placeholder="Contact Number" type="text">
-            <mat-error *ngIf="registrationForm.get('contactNo').hasError('required') && registrationForm.get('contactNo').touched">This is required</mat-error>
-            <mat-error *ngIf="registrationForm.get('contactNo').hasError('pattern') && registrationForm.get('contactNo').touched">Invalid Contact Number</mat-error>
+            <mat-error *ngIf="formErrors.contactNo">{{formErrors.contactNo}}</mat-error>
           </mat-form-field>
       </p>
       <p>
+
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Date of Birth</mat-label>
-            <input matInput formControlName="DOB" placeholder="Date of Birth" type="date">
-            <mat-error *ngIf="registrationForm.get('DOB').hasError('required') && registrationForm.get('DOB').touched">This is required</mat-error>
+            <input matInput formControlName="DOB" [matDatepicker]="picker" placeholder="Date of Birth"
+              (dateInput)="onDobChanged($event)" (dateChange)="onDobChanged($event)">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="formErrors.DOB">{{formErrors.DOB}}</mat-error>
           </mat-form-field>
+          <small style="color: red;" *ngIf="!validAge && registrationForm.get('DOB').touched">Valid age group is 18 to 96</small>
+
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Registeration Date</mat-label>
             <input matInput formControlName="registrationDate" placeholder="Registration Date" type="date">
-            <mat-error *ngIf="registrationForm.get('registrationDate').hasError('required') && registrationForm.get('registrationDate').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.registrationDate">{{formErrors.registrationDate}}</mat-error>
+          </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>Account Type</mat-label>
+          <mat-select matInput placeholder="Select Account Type" (selectionChange)="accountTypeSelect($event.value)" formControlName="accType">
+              <mat-option *ngFor="let aType of accountType" [value]="aType">
+                {{ aType }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="formErrors.accType">{{formErrors.accType}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
-            <mat-label>Account Type</mat-label>
-            <input matInput formControlName="accType" placeholder="Account Type" type="text">
-            <mat-error *ngIf="registrationForm.get('accType').hasError('required') && registrationForm.get('accType').touched">This is required</mat-error>
+            <mat-label>Initial Deposit Amount</mat-label>
+            <input matInput [disabled]="true" formControlName="initDepoAmt" placeholder="Initial Deposit Amount" type="text">
+            <mat-error *ngIf="formErrors.initDepoAmt">{{formErrors.initDepoAmt}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Branch Name</mat-label>
             <input matInput formControlName="branchName" placeholder="Branch Name" type="text">
-            <mat-error *ngIf="registrationForm.get('branchName').hasError('required') && registrationForm.get('branchName').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.branchName">{{formErrors.branchName}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Citizen Status</mat-label>
             <input matInput formControlName="citizenStat" placeholder="Citizen Status" type="text">
-            <mat-error *ngIf="registrationForm.get('citizenStat').hasError('required') && registrationForm.get('citizenStat').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.citizenStat">{{formErrors.citizenStat}}</mat-error>
           </mat-form-field>
       </p>
-      <p>
-        <mat-form-field class="half-width" appearance="outline">
-            <mat-label>Initial Deposit Amount</mat-label>
-            <input matInput formControlName="initDepoAmt" placeholder="Initial Deposit Amount" type="text">
-            <mat-error *ngIf="registrationForm.get('name').hasError('required') && registrationForm.get('name').touched">This is required</mat-error>
-          </mat-form-field>
-      </p>
+      
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Identification Proof Type</mat-label>
             <input matInput formControlName="idProofType" placeholder="Identification Proof Type" type="text">
-            <mat-error *ngIf="registrationForm.get('idProofType').hasError('required') && registrationForm.get('idProofType').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.idProofType">{{formErrors.idProofType}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Identification Proof Number</mat-label>
             <input matInput formControlName="idProofNo" placeholder="Identification Proof Number" type="text">
-            <mat-error *ngIf="registrationForm.get('idProofNo').hasError('required') && registrationForm.get('idProofNo').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.idProofNo">{{formErrors.idProofNo}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Nominee Name</mat-label>
             <input matInput formControlName="nomineeName" placeholder="Nominee Name" type="text">
-            <mat-error *ngIf="registrationForm.get('nomineeName').hasError('required') && registrationForm.get('nomineeName').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.nomineeName">{{formErrors.namnomineeNamee}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Nominee Account Number</mat-label>
             <input matInput formControlName="nomineeAccNo" placeholder="Nominee Account Number" type="text">
-            <mat-error *ngIf="registrationForm.get('nomineeAccNo').hasError('required') && registrationForm.get('nomineeAccNo').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.nomineeAccNo">{{formErrors.nomineeAccNo}}</mat-error>
           </mat-form-field>
       </p>
       <p>
         <mat-form-field class="half-width" appearance="outline">
             <mat-label>Nominee Address</mat-label>
             <input matInput formControlName="nomineeAddress" placeholder="Nominee Address" type="text">
-            <mat-error *ngIf="registrationForm.get('nomineeAddress').hasError('required') && registrationForm.get('nomineeAddress').touched">This is required</mat-error>
+            <mat-error *ngIf="formErrors.nomineeAddress">{{formErrors.nomineeAddress}}</mat-error>
           </mat-form-field>
       </p>
   </mat-dialog-content>

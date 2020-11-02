@@ -15,10 +15,11 @@
   <mat-card-content>
     <div class="row">
       <div class="center">
-        BOW provides you tonns of benefits and ease of user experience. Register now to learn more!
+        BOW provides you tonns of benefits and ease of user experience. 
       </div>
-      <div class="col-md-4">
-        <img src = "assets/images/arrow.jpg" width = "100" height = "100">
+      <div class="col-md-4" *ngIf = "!loggedIn">
+        Register now to learn more!
+        <img src = "assets/images/arrow.jpg"  width = "100" height = "100">
         <a mat-button class="primary" (click) = "openRegForm()" width = "100" height = "200"><h3>Register Now!!</h3></a>
 
      </div>

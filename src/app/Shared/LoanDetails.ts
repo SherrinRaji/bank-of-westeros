@@ -1,10 +1,13 @@
 export class Loan {
+    cusId: string;
     loanType: string;
     loanAmount: string;
     lApplyDate: string;
     lIssueDate: string;
     rateOfInterest: number;
     duration: number;
+    eduLoan: EducationLoan;
+    persLoan: PersonalLoan;
 };
 export class EducationLoan{
     courseFee: number;
