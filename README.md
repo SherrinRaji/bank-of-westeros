@@ -1,6 +1,6 @@
-# BOW - Bank of Westworld
+# BOW - Bank of Westeros
 
-A learning project for Angular :)
+A learning project for Angular with a touch of Game of Thrones :)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
 
